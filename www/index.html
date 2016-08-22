@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+
+        <title>Ayuda.me</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+		<script src="js/trucks.js"></script>
+
+    </head>
+    <body>
+
+    	<div data-role="page" id="main">
+			<div data-role="header">
+				<h1>Ayuda.me</h1>
+			</div>
+			<div data-role="content">
+				<ul data-role="listview">
+					<li data-role="list-divider">What do you need?</li>
+					<li><a href="#truck" data-ajax="false">Towing</a></li>
+					<li><a href="#employeeListPage" data-ajax="false">Lockout</a></li>
+					<li><a href="#jumpstart" data-ajax="false">Jump Start</a></li>
+					<li><a href="#fuel" data-ajax="false">Fuel</a></li>
+					<li><a href="#flattire" data-ajax="false">Flat Tire</a></li>
+				</ul>
+			</div>
+				<a href="tel:14085254536"><img src="img/call-us.png" width=40 height=40 align="middle"></a>
+				<h5>Call us</h5>
+			
+			<div data-role="footer">
+				<h1>Ayuda.me</h1>
+		
+			</div><!-- /footer -->
+			
+		</div>
+		
+		<!-- Start of second page -->
+		<div data-role="page" id="truck">
+
+			<div data-role="header">
+				<p><a href="#main">Back to main</a></p>	
+				<h1>Truck</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+				<p>I see you need a truck.</p>		
+
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<h4><a href="#confirm">Next -></a></h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+		
+		<!-- Start of third page -->
+		<div data-role="page" id="employeeListPage">
+
+			<div data-role="header">
+				<p><a href="#main">Back to main</a></p>	
+				<h1>Lockout</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+			
+				
+			   <ul id="employeeList" data-role="listview" data-filter="true"></ul>
+
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<h4><a href="#confirm">Next -></a></h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+
+		<!-- Start of fourth page -->
+		<div data-role="page" id="jumpstart">
+
+			<div data-role="header">
+				<p><a href="#main">Back to main</a></p>	
+				<h1>Jump Start</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+				 <script type="text/javascript">
+
+				 $(document).ready(function() {
+
+					$("#display").click(function() {                
+
+					  $.ajax({    //create an ajax request to load_page.php
+						type: "GET",
+						url: "http://52.25.158.79/trucks.php?q=1",             
+						dataType: "html",   //expect html to be returned                
+						success: function(response){                    
+							$("#responsecontainer").html(response); 
+							alert(response);
+						}
+
+					});
+				});
+				});
+
+				</script>
+
+				<h3 align="center">Ajax Jquery</h3>
+				<table border="1" align="center">
+				   <tr>
+					   <td> <input type="button" id="display" value="Display All Data" /> </td>
+				   </tr>
+				</table>
+				<div id="responsecontainer" align="center">
+
+				</div>	
+
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<h4><a href="#confirm">Next -></a></h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+		
+				<!-- Start of fifth page -->
+		<div data-role="page" id="fuel">
+
+			<div data-role="header">
+				<p><a href="#main">Back to main</a></p>	
+				<h1>Fuel</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+			<a href="http://52.25.158.79/trucks.php?q=1" rel="external">Multi-page link</a>
+
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<h4><a href="#confirm">Next -></a></h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+
+				<!-- Start of sixth page -->
+		<div data-role="page" id="flattire">
+
+			<div data-role="header">
+				<p><a href="#main">Back to main</a></p>	
+				<h1>Flattire</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+				<script>
+					function showUser(str) {
+						if (str == "") {
+							document.getElementById("txtHint").innerHTML = "";
+							return;
+						} else { 
+							if (window.XMLHttpRequest) {
+								// code for IE7+, Firefox, Chrome, Opera, Safari
+								xmlhttp = new XMLHttpRequest();
+							} else {
+								// code for IE6, IE5
+								xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+							}
+							xmlhttp.onreadystatechange = function() {
+								if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+									document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+								}
+							}
+							xmlhttp.open("GET","http://52.25.158.79/getuser.php?q="+str,true);
+							xmlhttp.send();
+						}
+					}
+					</script>
+					
+					<form>
+						<select name="users" onchange="showUser(this.value)">
+						  <option value="">Select a person:</option>
+						  <option value="1">Harding</option>
+						  <option value="2">24 Towing</option>
+						  <option value="4">89 Service</option>
+						  <option value="5">A and A</option>
+						  </select>
+						</form>
+						<br>
+						<div id="txtHint"><b>Person info will be listed here.</b></div>
+
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<h4><a href="#confirm">Next -></a></h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+		
+						<!-- Start of seventh page 
+							Latitude: 37.41264140757582
+							Longitude: -121.93682670593262
+						-->
+		<div data-role="page" id="confirm">
+
+			<div data-role="header">
+				<p><a href="#main">Back to main</a></p>	
+				<h1>Confirmation</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+				<p id="demo">Click the button to get your position.</p>
+
+				<button onclick="getLocation()">Find closest help</button>
+
+				<div id="mapholder"></div>
+
+				<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+				<script>
+				var x = document.getElementById("demo");
+				function getLocation() {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(showPosition, showError);
+					} else { 
+						x.innerHTML = "Geolocation is not supported by this browser.";
+					}
+				}
+
+				function showPosition(position) {
+					lat = position.coords.latitude;
+					lon = position.coords.longitude;
+					//alert(lat + " " + lon);
+					latlon = new google.maps.LatLng(lat, lon)
+					mapholder = document.getElementById('mapholder')
+					mapholder.style.height = '250px';
+					mapholder.style.width = '500px';
+
+					var myOptions = {
+					center:latlon,zoom:14,
+					mapTypeId:google.maps.MapTypeId.ROADMAP,
+					mapTypeControl:false,
+					navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+					}
+	
+					var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+					var marker1 = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+
+					var myCenter=new google.maps.LatLng(37.41264140757582,-121.93682670593262);
+					var marker=new google.maps.Marker({
+					position:myCenter,
+					map:map,
+					title:"Tow Truck San Jose - 1-408-999-7878"
+					});
+					
+					var y = calculate_distance(lat, lon,37.41331,-121.93699);
+					
+					
+					y = Math.round(y * 10) / 10; 
+					
+					//alert(y);
+					
+					var infowindow = new google.maps.InfoWindow({
+    				content: "Tow Truck San Jose - <a href=tel:14085254536>Call us at 14085254526</a> - Distance: " + y
+					});
+					
+					var infowindow1 = new google.maps.InfoWindow({
+    				content: "You are here" 
+					});
+					
+					google.maps.event.addListener(marker, 'click', function() {
+  					infowindow.open(map,marker);
+					});
+
+					google.maps.event.addListener(marker1, 'click', function() {
+  					infowindow1.open(map,marker1);
+					});
+
+					marker.setMap(map);
+
+				}
+				
+				
+				function showError(error) {
+					switch(error.code) {
+						case error.PERMISSION_DENIED:
+							x.innerHTML = "User denied the request for Geolocation."
+							break;
+						case error.POSITION_UNAVAILABLE:
+							x.innerHTML = "Location information is unavailable."
+							break;
+						case error.TIMEOUT:
+							x.innerHTML = "The request to get user location timed out."
+							break;
+						case error.UNKNOWN_ERROR:
+							x.innerHTML = "An unknown error occurred."
+							break;
+					}
+					
+				}
+				
+                function calculate_distance (lat1, lon1, lat2, lon2) {
+					var R = 6371; // km
+					var dlon = (lon2 - lon1) * (3.1416 /180)
+					var dlat = (lat2 - lat1) * (3.1416 /180) 
+					var a = Math.pow(Math.sin(dlat/2),2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2) 
+					var c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a) ) 
+					var d = R * c
+					
+					return d
+				}
+
+
+				
+
+
+				</script>		
+
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<h1>Ayuda.me</h1>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+    </body>
+</html>
